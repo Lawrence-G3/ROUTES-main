@@ -1,6 +1,9 @@
 <?php
 
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +87,7 @@ Route::group(['prefix' => 'app'], function () {
     // Put one Route Group code line here below
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'admin', 'middleware' => ['is_admin']], function () {
-        // Define routes with the "admin" prefix here
+        
     });
 });
 

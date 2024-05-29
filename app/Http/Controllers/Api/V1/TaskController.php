@@ -14,9 +14,10 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return Task::all();
-    }
+{
+    return response()->json(Task::all());
+}
+
 
     public function store(Request $request)
     {
@@ -30,9 +31,11 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Task $task)
-    {
-        return $task;
-    }
+{
+    return response($task);
+}
+
+
 
     /**
      * Update the specified resource in storage.
@@ -42,9 +45,12 @@ class TaskController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Task $task)
-    {
-        return $task->update($request->validate(['name' => 'required']));
-    }
+{
+    $success = $task->update($request->validate(['name' => 'required']));
+
+    return response()->json(['success' => $success]);
+}
+
 
     /**
      * Remove the specified resource from storage.
